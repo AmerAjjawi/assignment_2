@@ -59,7 +59,7 @@ router.delete("/Product/:id", async (req, res) => {
     res.status(204).send();
   } catch {
     res.status(404);
-    res.send({ error: "Post doesn't exist!" });
+    res.send({ error: "Product doesn't exist !" });
   }
 });
 
@@ -67,7 +67,7 @@ router.delete("/Product/:id", async (req, res) => {
 
 router.delete("/Products", async (req, res) => {
   try {
-    await Post.deleteOne({ _id: req.params.id });
+    await Post.deleteMany({ _id: req.params.id });
     res.status(204).send();
   } catch {
     res.status(404);
@@ -76,9 +76,16 @@ router.delete("/Products", async (req, res) => {
 });
 
 //get products with name kw
-router.get("/Products:[kw]", async (req, res) => {
-  const posts = await Post.find();
-  res.send(posts);
-});
+router.get("/Products/:kw", async (req, res) => {
+  const keyword = req.params.kw;
 
+  try {
+    const posts = await Post.find({
+      title: { $regex: keyword, $options: 'i' } 
+    });
+    res.send(posts);
+  } catch (error) {
+    res.status(500).send({ error: "uh oh! there's no product with that identifer." });
+  }
+});
 module.exports = router;
