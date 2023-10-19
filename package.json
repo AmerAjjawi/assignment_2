@@ -20,5 +20,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmerAjjawi/assignment_2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AmerAjjawi/assignment_2/issues"
+  },
+  "homepage": "https://github.com/AmerAjjawi/assignment_2#readme",
   "description": ""
 }
