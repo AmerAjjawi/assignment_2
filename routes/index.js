@@ -17,7 +17,8 @@ mongoose.connect("mongodb://localhost:27017/Marketplaces")
 //   console.log("success 3003!!!");
 // });
 
-
+app.use(cors());
+app.use(express.json());
 
 
 /* GET home page. */
